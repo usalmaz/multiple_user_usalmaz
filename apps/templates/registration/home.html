@@ -1,0 +1,209 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+    <header class="masthead text-center text-white d-flex">
+      <div class="container my-auto">
+        <div class="row">
+          <div class="col-lg-10 mx-auto">
+              <span style="font-size: 50px; opacity: 0.7; background-color: white"><b class="mr-3 ml-3" style="color: black">EME</b></span> <span style="font-size: 50px; opacity: 0.7; background-color: black"><b class="mr-3 ml-3">Region</b></span>
+          </div>
+          </div>
+      </div>
+    </header>
+    <section class="border-bottom" id="about">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mx-auto text-left">
+            <h2 class="section-heading">Europe & the Middle East</h2><br>
+            <p class="mb-4">The Europe and Middle East Region spans across the EurAsian Continent; from picturesque streets of Lisbon in the west to the breathtaking wilderness of Kamchatka in Russia's far east. The divirsity of landscapes is eclipsed only by the diversity of people groups. There is one unifying truth; everyone, everywhere has need of a Savior.  This the mission of the Europe and Middle East United Pentecostal Church: to share the good news of a powerful Savior.
+              <br><br><div class=" col-sm-12 mx-auto text-right">Capturing the hearts of mankind and Cities for Christ.</div></p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="border-bottom" id="areas">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 text-left">
+            <h2 class="section-heading">Areas</h2>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <h3 class="mb-3">Northern Europe</h3>
+              <img src="{% static 'users/img/iceland3edit.jpg' %}" alt="Northern Europe" style="width:100%">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <h3 class="mb-3">Western Europe</h3>
+              <img src="{% static 'users/img/franceedit.jpg' %}" alt="Western Europe" style="width:100%">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <h3 class="mb-3">Eastern Europe</h3>
+              <img src="{% static 'users/img/hungaryedit.jpg' %}" alt="Eastern Europe" style="width:100%">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <h3 class="mb-3">CIS & Baltic States</h3>
+              <img src="{% static 'users/img/latviaedit.jpg' %}" alt="CIS" style="width:100%">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <h3 class="mb-3">Middle East & Gulf States</h3>
+              <img src="{% static 'users/img/dubai4edit.jpg' %}" alt="Middle East" style="width:100%">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+              <h3 class="mb-3">North Africa & Mediterranean</h3>
+              <img src="{% static 'users/img/NaMededit.jpg' %}" alt="Eastern Europe" style="width:100%">
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 text-center">
+            <div class="service-box mt-5 mx-auto">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-bottom" id="locate">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mx-auto text-left">
+            <h2 class="section-heading">Locate a Church!</h2>
+            <br>
+            <p class="mb-5">There are fantastic, Spirit lead, Holy Ghost filled churches all across the EME Region.  Find one near you! </p>
+          </div>
+        </div>
+        <div class="container-fluid headerimage" style="padding:0 !important">
+             <div class="col-md-12" style="padding:0 !important;">
+                 <img class="img-fluid" src="{% static 'users/img/map.png' %}" alt="map" width="1200" height="500">
+                  <div class="btn-wrapper"  style="position: absolute; top: 220px; left: 400px;">
+                    <a href="{% url 'users:countries' %}">
+                    <button class="btn btn-secondary col-md-4 col-lg-2"
+                            type="button"
+                            id="dropdownMenuButton"
+                            style=" border: 26px solid #f9f9f9;
+                                    cursor: pointer; min-width: 390px;
+                                    font-weight: bold; background-color: #447193;
+                                    color: white; padding: 8px; border-radius: 0px;
+                                    font-size: 16px;);"
+
+                            onclick="{% url 'users:countries' %}">Search for a Church
+                    </button>
+                  </a>
+                  </div>
+           </section>
+
+           <section class="border-bottom" id="ministries">
+             <div class="container">
+               <div class="row">
+                 <div class="col-lg-12 text-left">
+                   <h2 class="section-heading">Ministries</h2>
+                 </div>
+               </div>
+             </div>
+             <div class="container border-right">
+               <div class="row">
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/Campus.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Campus</h3>
+                      <p class="text-left text-muted">For College Students</p>
+                      <p style="padding-bottom: 71px;" class="text-left mt-4">Giving students something that can't be found in textbooks! This ministry is specific to College Campuses.</p>
+                      <p><a href="http://www.campusnow.org/home" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/children.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Children</h3>
+                      <p class="text-left text-muted">Energy and Creativity</p>
+                      <p style="padding-bottom: 71px;" class="text-left mt-4">Resources are available to help you develop an effective children's ministry wherever you are. We can help!</p>
+                      <p><a href="#" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/Evangelism.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Evangelism</h3>
+                      <p class="text-left text-muted">You are a Soul Winner</p>
+                      <p class="text-left mt-4">Europe has 831,400,000 souls that need Christ. With the EU opening up to people of all ethnic, cultural & religious backgrounds, there is no greater time than right now to “Enter the Harvest!</p>
+                      <p><a href="http://eurosoulwinners.com/ESW2018/" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/Men.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Men</h3>
+                      <p class="text-left text-muted">Ministry specific for Men</p>
+                      <p style="padding-bottom: 95px;" class="text-left mt-4">Fellowship, Camaraderie, Friendship, and Encouragement!</p>
+                      <p><a href="#" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/military.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Military</h3>
+                      <p class="text-left text-muted">Serving those who Serve</p>
+                      <p style="padding-bottom: 95px;" class="text-left mt-4">Points of connection and fellowship for those serving abroad.</p>
+                      <p><a href="https://www.facebook.com/upcimilitarychaplains/" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/ladies.jpg' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Ladies</h3>
+                      <p class="text-left text-muted">Ministry specific to Ladies</p>
+                      <p style="padding-bottom: 120px;" class="text-left mt-4">Powerful ministry by Ladies for Ladies!</p>
+                      <p><a href="https://www.facebook.com/EMELadies/" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/literature.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Literature</h3>
+                      <p class="text-left text-muted">Getting the word out</p>
+                      <p style="padding-bottom: 0px;" class="text-left mt-4">Just as we are diverse geographically, ethnically, and culturally we are also diverse linguistically. This ministry is devoted to an ever expanding repository of information in various languages.</p>
+                      <p><a href="http://www.globaltracts.com" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+                 <div class="col-lg-3 col-md-12 text-center">
+                   <div class="service-box mt-5 mx-auto">
+                     <img src="{% static 'users/img/youth.png' %}" alt="campus" style="width:25%" align="right" class="w3-margin-right">
+                      <h3 class="mb-3 text-left">Youth</h3>
+                      <p class="text-left text-muted">For those under 25</p>
+                      <p style="padding-bottom: 24px;" class="text-left mt-4">This world does not need more young people to sell out... this generation needs more like Joshua, Esther, Caleb, and Ruth! EME Youth Ministry is devoted to empowering this generation.</p>
+                      <p><a href="http://www.emeyouth.com" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
+                   </div>
+                 </div>
+           </section>
+           <section class="border-bottom h-100" id="contact">
+             <div class="container">
+               <div class="row">
+                 <div class="col-lg-12 mx-auto text-left">
+                   <h2 class="section-heading text-center"><strong class="text-uppercase position-sticky">Contact us</strong></h2><br>
+                   <div class="social">
+                     <br>
+                     {% include 'users/social_buttons.html' %}
+                 </div>
+               </div>
+             </div>
+           </section>
+
+
+{% endblock %}

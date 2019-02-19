@@ -1,0 +1,50 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="content-section p-5 mt-5 pl-4">
+<h1 class="text-center text-uppercase">{{ city }}</h1>
+
+{% for store in address %}
+
+    {% if store.author.access_challenge %}
+
+    <h3 class="small text-center mt-4">In order to get information about this city, you need to contact us through this email</h3><br>
+    <p class="text-center">upcieme@protonmail.com</p>
+
+   {% else %}
+
+<table class="table table-hover text-left col-sm-12 mt-4" style="table-layout: fixed; word-wrap: break-word;">
+       <tbody>
+         <tr>
+           <th style="width: 100px;"> Name: </th>
+           <td> {{store.title}}</td>
+         </tr>
+
+        <tr>
+          <th style="width: 100px;"> Address: </th>
+          <td> {{store.address}}</td>
+        </tr>
+        <tr>
+          <th style="width: 100px;"> Email: </th>
+          <td> {{store.email}}</td>
+        </tr>
+        <tr>
+          <th style="width: 100px;"> Phone: </th>
+          <td> {{store.phone}}</td>
+        </tr>
+        <tr>
+          <th style="width: 100px;">Website: </th>
+          <td> {{store.website}}</td>
+        </tr>
+      {% endif %}
+
+    </tbody>
+</table>
+
+
+{% endfor %}
+{% endblock %}
+
+</div>

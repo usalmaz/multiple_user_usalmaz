@@ -1,0 +1,46 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<br>
+<br>
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-6 border-right">
+      <div class="media">
+        <img class="rounded-circle" style="width: 200px;" src="{{ user.profile.image.url }}">
+          <div class="media-body pl-4">
+            <h4 class="account-heading"> username: {{ object.username }}   </h4>
+            <p class="text-secondary"> First name: {{ object.first_name }} </p>
+            <p class="text-secondary"> Last name: {{ object.last_name }}   </p>
+            <p class="text-secondary"> Email: {{ object.email }}           </p>
+            <p class="text-secondary"> Country: {{ object.country }}       </p>
+            <p class="text-secondary"> City: {{ object.city }}             </p>
+          </div>
+      </div>
+  </div>
+
+  <div class="col-sm-6"">
+    <div class="media">
+      <div class="media-body pl-4" style="background-color: white; width: 500px; padding-left: 14px; margin-right: 1px;">
+        <h4 class="account-heading">
+          {% if object.country %}
+            Churches in {{ object.country }}
+          {% endif %}
+        </h4>
+  <div class="border-top pt-3">
+    <small class="text-muted">
+      <a class="ml-2" style="text-decoration: none;" href="{% url 'users:blog' %}">
+        <button
+          style="border-radius: 0;
+          width: 250px; padding-left: 4px;"
+          class="btn  btn-info btn-block"
+          type="submit">Click here to see them
+        </button>
+      </a>
+    </small>
+  </div>
+
+
+{% endblock %}

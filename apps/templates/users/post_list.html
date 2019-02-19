@@ -1,0 +1,70 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+
+
+<br>
+<br>
+<div class="container mt-5">
+        {% for post in posts %}
+    <table class="table table-hover">
+       <tbody>
+        <tr>
+          <th>Author: </th>
+            <td>{{ post.author.first_name }} &nbsp; {{ post.author.last_name }}</td>
+        </tr>
+
+        <tr>
+          <th>Name: </th>
+            <td>{{ post.title }}</td>
+        </tr>
+        <tr>
+          <th>Country: </th>
+            <td>{{ post.country }}</td>
+        </tr>
+        <tr>
+          <th>City: </th>
+            <td>{{ post.city }}</td>
+        </tr>
+        <tr>
+          <th>Address: </th>
+            <td>{{ post.address }}</td>
+        </tr>
+        <tr>
+          <th>Email: </th>
+            <td>{{ post.email }}</td>
+        </tr>
+        <tr>
+          <th>Phone: </th>
+            <td>{{ post.phone }}</td>
+        </tr>
+        <tr>
+          <th>Website: </th>
+            <td>{{ post.website }}</td>
+        </tr>
+        <tr>
+          <th>Date created: </th>
+            <td>{{ post.date_posted }}</td>
+        </tr>
+    </tbody>
+</table>
+{% empty %}
+
+<div class="well well-lg bordered" style="background-color: #F7EDED; padding: 200px; ">
+
+<h2 class="text-center small">You don't have any posts yet. <br>Please click <a href="{% url 'users:post-create' %}">"New Post"</a> to create one. </h2>
+
+</div>
+{% endfor %}
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+
+{% endblock %}

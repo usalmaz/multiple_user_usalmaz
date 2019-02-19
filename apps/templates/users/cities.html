@@ -1,0 +1,42 @@
+{% extends 'shared/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<div class="content-section p-5 mt-5 pl-4">
+
+  {% if cities.author.access_challenge %}
+    <p>Sorry</p>
+    {% else %}
+      <table class="table table-hover text-left col-sm-12" style="table-layout: fixed; word-wrap: break-word;">
+        <tbody>
+          <tr>
+            <th> Cities in {{ country }}</th>
+          </tr>
+        </tbody>
+      </table>
+    {% endif %}
+
+</div>
+
+{% for city in cities %}
+
+{% if city.author.access_challenge and forloop %}
+  <p class="small text-center">In order to get information about this country contact us through emeupci@protonmail.com</p>
+
+{% else %}
+
+
+          <table class="table table-hover text-left col-sm-12" style="table-layout: fixed; word-wrap: break-word;">
+           <tbody>
+            <tr>
+             <td><a class="text-uppercase" href="{% url 'users:address' city.pk %}">{{ city.city }}</a></td>
+            </tr>
+           </tbody>
+          </table>
+
+{% endif %}
+{% endfor %}
+{% endblock %}
+
+</div>
