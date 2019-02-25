@@ -8,7 +8,7 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     first_name = models.CharField(verbose_name="First name", max_length=255)
-    last_name = models.CharField(verbose_name="First name", max_length=255)
+    last_name = models.CharField(verbose_name="Last name", max_length=255)
     country = models.CharField(verbose_name="Country name", max_length=255)
     city = models.CharField(verbose_name="City name", max_length=255)
     email = models.EmailField(verbose_name="Email", max_length=255)
@@ -18,9 +18,16 @@ class User(AbstractUser):
     def __str__(self):
         return self.username
 
+class Country(models.Model):
+    name = models.CharField(max_length=100, blank=True, null=True)
+
+
+    def __str__(self):
+        return self.name
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
-    country = models.CharField(max_length=255)
+    country = models.ForeignKey(Country, on_delete=models.CASCADE)
     city = models.CharField(max_length=255)
     address = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
@@ -30,7 +37,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.title
+        return self.city
 
     def get_absolute_url(self):
         return reverse('users:blog')

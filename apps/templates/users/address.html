@@ -8,13 +8,6 @@
 
 {% for store in address %}
 
-    {% if store.author.access_challenge %}
-
-    <h3 class="small text-center mt-4">In order to get information about this city, you need to contact us through this email</h3><br>
-    <p class="text-center">upcieme@protonmail.com</p>
-
-   {% else %}
-
 <table class="table table-hover text-left col-sm-12 mt-4" style="table-layout: fixed; word-wrap: break-word;">
        <tbody>
          <tr>
@@ -38,12 +31,9 @@
           <th style="width: 100px;">Website: </th>
           <td> {{store.website}}</td>
         </tr>
-      {% endif %}
 
     </tbody>
 </table>
-
-
 {% endfor %}
 {% endblock %}
 

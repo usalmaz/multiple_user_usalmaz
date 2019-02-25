@@ -27,6 +27,8 @@
 
     <!-- Custom styles for this template -->
     <link href="{% static 'users/css/creative.min.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{% static 'users/img/newupcifavicon.png' %}">
+
 
   </head>
 
@@ -35,7 +37,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav1">
       <div class="container">
-        <a class="navbar-brand js-scroll-trigger" href="{% url 'users:home' %}#page-top">Home</a>
+        <a href="https://www.upci.org/home" target="_blank"><img align="left" src="{% static 'users/img/newheader1.png' %}" alt="UPCI" width="100" height="35"></a>&nbsp;
+        <a href="{% url 'users:home' %}#page-top" style="float: left; font-size: 17px; color: black;" class="w3-bar-item w3-button"><b>EME</b> Region</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -61,7 +64,7 @@
               <a class="nav-link js-scroll-trigger" href="{% url 'logout' %}">Log Out</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="{% url 'users:post-create' %}">New Post</a>
+              <a class="nav-link js-scroll-trigger" href="{% url 'users:post-create' %}">Add Church</a>
             </li>
               {% else %}
             <li class="nav-item">

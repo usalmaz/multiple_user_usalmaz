@@ -76,10 +76,13 @@ def cities(request, pk):
 
     country = Post.objects.get(id=pk).country
     cities = Post.objects.filter(country=country).distinct('city')
+    author = Post.objects.get(id=pk).author
 
     context = {
         'cities':cities,
-        'country':country
+        'country':country,
+        'author':author,
+
     }
 
     return render(request, 'users/cities.html', context)
@@ -99,4 +102,12 @@ def address(request, pk):
     return render(request, 'users/address.html', context)
 
 def home(request):
-    return render(request, 'registration/home.html')
+        user = User.objects.all()
+        country = Post.objects.all().distinct('country')
+
+        context = {
+            'posts': country,
+            'user': user
+        }
+
+        return render(request, 'registration/home.html', context)

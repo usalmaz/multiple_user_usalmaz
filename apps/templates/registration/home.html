@@ -1,5 +1,6 @@
 {% extends 'shared/base.html' %}
 {% load staticfiles %}
+{% load crispy_forms_tags %}
 
 {% block content %}
     <header class="masthead text-center text-white d-flex">
@@ -90,24 +91,24 @@
           </div>
         </div>
         <div class="container-fluid headerimage" style="padding:0 !important">
-             <div class="col-md-12" style="padding:0 !important;">
-                 <img class="img-fluid" src="{% static 'users/img/map.png' %}" alt="map" width="1200" height="500">
-                  <div class="btn-wrapper"  style="position: absolute; top: 220px; left: 400px;">
-                    <a href="{% url 'users:countries' %}">
-                    <button class="btn btn-secondary col-md-4 col-lg-2"
-                            type="button"
-                            id="dropdownMenuButton"
-                            style=" border: 26px solid #f9f9f9;
-                                    cursor: pointer; min-width: 390px;
-                                    font-weight: bold; background-color: #447193;
-                                    color: white; padding: 8px; border-radius: 0px;
-                                    font-size: 16px;);"
+            <div class="col-md-12" style="padding:0 !important;">
+                <img class="img-fluid" src="{% static 'users/img/map.png' %}" alt="map" width="1200" height="500">
+                 <div class="btn-wrapper"  style="position: absolute; top: 220px; left: 400px;">
+                   <a href="{% url 'users:countries' %}">
+                   <button class="btn btn-secondary btn-block col-md-4 col-lg-2"
+                           type="button"
+                           id="dropdownMenuButton"
+                           style=" border: 26px solid #f9f9f9;
+                                   cursor: pointer; min-width: 390px;
+                                   font-weight: bold; background-color: #447193;
+                                   color: white; padding: 8px; border-radius: 0px;
+                                   font-size: 16px;);"
 
-                            onclick="{% url 'users:countries' %}">Search for a Church
-                    </button>
-                  </a>
-                  </div>
-           </section>
+                           onclick="{% url 'users:countries' %}">Search for a Church
+                   </button>
+                 </a>
+                 </div>
+   </section>
 
            <section class="border-bottom" id="ministries">
              <div class="container">
@@ -202,6 +203,16 @@
                      {% include 'users/social_buttons.html' %}
                  </div>
                </div>
+               <div class="dropdown">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown button
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <a class="dropdown-item" href="{% url 'users:countries' %}">Kyrgyzstan</a>
+                    <a class="dropdown-item" href="http://127.0.0.1:8000/accounts/cabinet/cities/31/">Uzbekistan</a>
+                    <a class="dropdown-item" href="#">Kazahkstan</a>
+                  </div>
+                </div>
              </div>
            </section>
 
