@@ -146,7 +146,6 @@
 .dropdown {
   position: relative;
   display: inline-block;
-
 }
 
 .dropdown-content {
@@ -170,16 +169,21 @@
 
 .show {display: block;}
 
-a.social-icon:hover { text-decoration: none; }
-
-.dropdown {
+/* .social-buttons {
   display: flex;
   align-items: center;
   justify-content: center;
+} */
+
+.btn-wrapper {
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
-
-/*@media(min-width: 12000px){*/
+/* @media(min-width: 768px){ */
 
 .social1 {
   display: flex;
@@ -200,16 +204,7 @@ a.social-icon:hover { text-decoration: none; }
 
 }
 
-.card1 {
-  display: flex;
-  flex-wrap: wrap;
-  position: relative;
-  border: 4px blue solid;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.table-wrap {
+.card {
   display: flex;
   flex-wrap: wrap;
   position: relative;
@@ -220,14 +215,27 @@ a.social-icon:hover { text-decoration: none; }
   margin-right: 5px;
 }
 
+.table-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  border: 4px #ccc solid;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
 .row {
   display: flex;
   position: relative;
+  align-items: center;
 }
 
 .media {
   flex:1;
   align-items: center;
+  margin-bottom: 10px;
 
 
 }
@@ -238,25 +246,14 @@ a.social-icon:hover { text-decoration: none; }
 
 }
 
-.clearablefileinput {
-
-  display: none;
+.wrapper-img {
+  text-align: center;
 }
 
-<div class="parent">
-    <div class="child">
-        button go here
-    </div>
-</div>
-
-.container-fluid {
-
-  background-image: url('map.png') center no-repeat;
-}
 
 .headerimage {
     position: relative;
-    background: url(map.png) center no-repeat; /* <-- path to your map image here*/
+    background: url(../../users/img/map.png) center no-repeat; /* <-- path to your map image here*/
     background-size: cover;
     width: cover;
     height: 500px;
@@ -265,10 +262,10 @@ a.social-icon:hover { text-decoration: none; }
 .child { /*This class styles your button or your buttons container*/
     position: absolute;
     margin: 0 auto;
-    left: 0;
-    right: 0;
     top: 200px;
     bottom: 0px;
-    /*width: 80px;*/
+    right: 35%;
+    left: 35%;
+    width: cover;
     /*height: 60px;*/
 }

@@ -67,6 +67,7 @@ def cabinet(request):
     }
     return render(request, 'users/user_detail.html', context)
 
+
 @login_required
 def profile(request):
     if request.method == 'POST':
@@ -77,7 +78,7 @@ def profile(request):
         if uform.is_valid() and pform.is_valid():
             uform.save()
             pform.save()
-            messages.success(request, f'Your account has been updated!')
+            messages.success(request, 'Your account has been updated!')
             return redirect('users:cabinet')
     else:
         uform = UserUpdateForm(instance=request.user)
@@ -99,6 +100,7 @@ def blog(request):
             'posts': Post.objects.filter(author=request.user)
     }
     return render(request, 'users/post_list.html', context)
+
 
 def countries(request):
 

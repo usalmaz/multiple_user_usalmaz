@@ -25,7 +25,7 @@ SECRET_KEY = 'ce0r()3en$c75hyarcd335cts*oeya#or_@bhwri+p@vvun$xm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['emeupci.com', '138.68.93.164', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -83,8 +83,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'locator',
-        'USER': 'kazak',
-        'PASSWORD': '197791515a',
+        'USER': 'scott',
+        'PASSWORD': 'Acts2:38-39',
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
@@ -126,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
@@ -136,11 +138,11 @@ LOGIN_REDIRECT_URL = '/accounts/cabinet/'
 LOGIN_URL = 'login'
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'ualmaz@gmail.com'
-EMAIL_HOST_PASSWORD = '197723320a'
+EMAIL_HOST_USER = 'emeupci@gmail.com'
+EMAIL_HOST_PASSWORD = '12121212eme'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-
+# EMAIL_PORT = 587
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'apps', 'emails')
 

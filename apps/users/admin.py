@@ -7,4 +7,4 @@ admin.site.register(Post)
 admin.site.register(Country)
 
 
-admin.site.site_header = 'Welcome Admin!'
+admin.site.site_header = 'Welcome Scott!'

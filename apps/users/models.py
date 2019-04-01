@@ -26,7 +26,7 @@ def active(sender, instance, **kwargs):
     try:
         if instance.is_active and User.objects.filter(pk=instance.pk, is_active=False).exists():
             subject = 'Your account is activated'
-            mesagge = '%s your account is now active' %(instance.first_name)
+            mesagge = '%s your account is now active. Click the link to log in your accout https://emeupci.com/accounts/login/' %(instance.first_name)
             from_email = settings.EMAIL_HOST_USER
             send_mail(subject, mesagge, from_email, [instance.email], fail_silently=False)
     except:
@@ -37,7 +37,7 @@ def register(sender, instance, **kwargs):
     try:
         if kwargs.get('created', False):
             subject = "Verificatión of the %s 's account" %(instance.username)
-            mesagge = '%s, %s just registered in locator' %(instance.first_name, instance.last_name)
+            mesagge = '%s, %s just registered in www.emeupci.com. Click the link to activate him https://emeupci.com/admin/. ' %(instance.first_name, instance.last_name)
             from_email = settings.EMAIL_HOST_USER
             send_mail(subject, mesagge, from_email, [from_email], fail_silently=False)
     except:
@@ -73,7 +73,7 @@ class Profile(models.Model):
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
 
     def __str__(self):
-        return f'{self.user.username} Profile'
+        return self.user.username
 
     def save(self, force_insert=False, force_update=False, using=None):
         super().save()

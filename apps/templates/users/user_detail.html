@@ -5,17 +5,19 @@
 {% block content %}
 <br>
 <br>
-<div class="container mt-5">
+<div class="container mt-5 ml-5">
   <div>
     {% for messages in messages %}
-    <p class="alert alert-success" style="width: 50%">{{messages}}</p>
+    <p class="alert alert-success">{{messages}}</p>
     {% endfor %}
   </div>
   <br>
   <br>
   <div class="row">
-      <div class="media">
-        <img class="rounded-circle account-img" style="width: 220px; height: 230px;" src="{{ user.profile.image.url }}">
+      <div class="media wrapper-img">
+        <div class="account-img-div">
+          <img class="rounded-circle account-img" style="width: 220px; height: 230px;" src="{{ user.profile.image.url }}">
+        </div>
       </div>
       <div class="media-body pl-4">
         <h4 class="account-heading"> Profile Information   </h4>
@@ -31,16 +33,14 @@
       <div class="form-container mt-5">
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <fieldset class="form-group">
+        <fieldset class="form-group" style="width: 320px;">
           <legend class="border-bottom mb-4">Update Profile Info</legend>
           {{ uform|crispy }}
           {{ pform|crispy }}
         </fieldset>
-        <div class="browse mb-4">
-          <input id="id_image" class="clearablefileinput1" type="file" name="image" accept="image" style="width: 250px;">
-        </div>
-        <div class="form-group">
-          <button class="btn  btn-info btn-block" style="border-radius: 0; width: 200px; padding-left: 4px;" type="submit">Update</button>
+
+        <div class="form-group mt-4">
+          <button style="border-radius: 0; width: 200px; padding-left: 4px;" class="btn btn-info btn-block" type="submit">Update</button>
         </div>
       </form>
      </div>
@@ -50,7 +50,7 @@
   <div class="col-sm-6"">
     <div class="media">
       <div class="media-body pl-4" style="background-color: white; width: 500px; padding-left: 14px; margin-right: 1px;">
-        <h4 class="account-heading">
+        <h4 class="account-heading mb-4">
           {% if user.country %}
             <span class="text-muted small text-center">Churches added by <b>{{ user.first_name }} {{ user.last_name }}</b></span>
           {% endif %}
@@ -58,16 +58,16 @@
 
         {% for post in posts %}
 
-        <div class="card small d-flex p-2 col-sm-2.5 ml-2 mb-2 mt-4" style="background-color: #f2f3f4;">
+        <div class="card small d-flex col-lg-8 col-xs-12" style="background-color: #f2f3f4;">
             <div class="card-body" style="card-text: break-word">
-            <p class="card-text font-weight-bold mb-3 text-uppercase" style="width: 350px">Church title: <a href="{% url 'users:post-detail' post.pk %}">{{ post.title }}</a></p>
-            <p class="card-text" style="width: 350px">Country: {{post.country}}.</p>
-            <p class="card-text" style="width: 350px">City: <a href="{% url 'users:address' post.pk %}">{{post.city}}.</a></p>
-            <p class="card-text" style="width: 350px">Address: {{post.address}}.</p>
-            <p class="card-text" style="width: 350px">Email: {{post.email}}.</p>
-            <p class="card-text" style="width: 350px">Phone: {{post.phone}}.</p>
-            <p class="card-text" style="width: 350px">Website: <a href="{{post.website}}">{{post.website}}</a></p>
-            <p class="card-text text-muted" style="width: 350px">Added by: <a href="{% url 'users:cabinet' %}">{{post.author.first_name}} {{post.author.last_name}}</a> <br> on {{post.date_posted|date:"F d, Y"}}.</p>
+            <p class="card-text font-weight-bold mb-3 text-uppercase">Church title: <a href="{% url 'users:post-detail' post.pk %}">{{ post.title }}</a></p>
+            <p class="card-text">Country: {{post.country}}.</p>
+            <p class="card-text">City: <a href="{% url 'users:address' post.pk %}">{{post.city}}.</a></p>
+            <p class="card-text">Address: {{post.address}}.</p>
+            <p class="card-text">Email: {{post.email}}.</p>
+            <p class="card-text">Phone: {{post.phone}}.</p>
+            <p class="card-text">Website: <a href="{{post.website}}">{{post.website}}</a></p>
+            <p class="card-text text-muted">Added by: <a href="{% url 'users:cabinet' %}">{{post.author.first_name}} {{post.author.last_name}}</a> <br> on {{post.date_posted|date:"F d, Y"}}.</p>
             </div>
         </div>
 

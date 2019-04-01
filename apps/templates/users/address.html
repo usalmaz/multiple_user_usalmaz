@@ -9,7 +9,7 @@
 
 {% for store in address %}
 
-<div class="card1 small col-lg-8 col-xs-12" style="background-color: #f2f3f4;">
+<div class="card small d-flex" style="background-color: #f2f3f4;">
     <div class="card-body" style="card-text: break-word">
     <p class="card-text font-weight-bold mb-3 text-uppercase">Church title: <a href="{% url 'users:post-detail' store.pk %}">{{store.title}}</a></p>
     <p class="card-text">Address: {{store.address}}.</p>

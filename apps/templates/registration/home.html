@@ -8,7 +8,8 @@
       <div class="container my-auto">
         <div class="row">
           <div class="col-lg-10 mx-auto">
-              <span style="font-size: 50px; opacity: 0.7; background-color: white"><b class="mr-3 ml-3" style="color: black">EME</b></span> <span style="font-size: 50px; opacity: 0.7; background-color: black"><b class="mr-3 ml-3">Region</b></span>
+           <span style="font-size: 50px; opacity: 0.7; background-color: white"><b class="mr-3 ml-3" style="color: black">EME</b></span>
+           <span style="font-size: 50px; opacity: 0.7; background-color: black"><b class="mr-3 ml-3">Region</b></span>
           </div>
           </div>
       </div>
@@ -19,14 +20,15 @@
         <div class="row">
           <div class="col-lg-12 mx-auto text-left">
             <h2 class="section-heading">Europe & the Middle East</h2><br>
-            <p class="mb-4">The Europe and Middle East Region spans across the EurAsian Continent; from picturesque streets of Lisbon in the west to the breathtaking wilderness of Kamchatka in Russia's far east. The divirsity of landscapes is eclipsed only by the diversity of people groups. There is one unifying truth; everyone, everywhere has need of a Savior.  This the mission of the Europe and Middle East United Pentecostal Church: to share the good news of a powerful Savior.
+            <p class="mb-4">The Europe and Middle East Region spans across the EurAsian Continent; from picturesque streets of Lisbon in the west to the breathtaking wilderness of Kamchatka in Russia's far east. The divirsity of landscapes is eclipsed only by the diversity of people groups. There is one unifying truth; everyone, everywhere has need of a Savior. This the mission of the Europe and Middle East United Pentecostal Church: to share the good news of a powerful Savior.
               <br><br><div class=" col-sm-12 mx-auto text-right">Capturing the hearts of mankind and Cities for Christ.</div></p>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="border-bottom" id="areas">
+
+<section class="border-bottom" id="areas">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 text-left">
@@ -34,6 +36,7 @@
           </div>
         </div>
       </div>
+
       <div class="container">
         <div class="row">
           <div class="col-lg-3 col-md-6 text-center">
@@ -95,8 +98,9 @@
               </div>
                 <div class="container-fluid headerimage">
                   <div class="col-md-12">
-                      <div class=child>
-                       <div class="dropdown">
+                      <!-- <img class="background-image" src="{% static 'users/img/map.png' %}" alt="map" style="width: 100%;"> -->
+                      <div class="child">
+                        <div class="dropdown" align="center">
                            <button  onclick="myFunction()"
                                     class="dropbtn dropdown-toggle"
                                     style=" border: 26px solid #f9f9f9;
@@ -105,18 +109,19 @@
                                          color: white; padding: 8px; border-radius: 0px;
                                          font-size: 16px;);">Search for a church
                            </button>
-                       </div>
-                       <div id="myDropdown" class="dropdown-content">
-                           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                           {% for country in country %}
-                            <a href="{% url 'users:cities' country.pk %}">{{country.country}}</a>
-                           {% endfor %}
-                      </div>
-                      </div>
+                        </div>
 
-                  </div>
+                        <div id="myDropdown" class="dropdown-content">
+                            <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                            {% for country in country %}
+                              <a href="{% url 'users:cities' country.pk %}">{{country.country}}</a>
+                            {% endfor %}
+
+                          </div>
+                        </div>
 
    </section>
+
 
            <section class="border-bottom" id="ministries">
              <div class="container">
@@ -204,37 +209,14 @@
                    </div>
                  </div>
            </section>
-           <section class="border-bottom h-100" id="contact">
+           <section class="h-100" id="contact">
              <div class="container">
                <div class="row">
                  <div class="col-lg-12 mx-auto text-left">
-                   <h2 class="section-heading text-center"><strong class="text-uppercase position-sticky">Contact us</strong></h2><br>
+                   <h2 class="section-heading text-center"><strong class="text-uppercase position-sticky">Contact</strong></h2><br>
                      <br>
                      {% include 'users/social_buttons.html' %}
                  </div>
-               </div>
-             </div>
-           </section>
-           <section>
-             <div class="parent">
-               <div class="child">
-                <div class="dropdown">
-                           <button  onclick="myFunction()"
-                                    class="dropbtn dropdown-toggle"
-                                    style=" border: 26px solid #f9f9f9;
-                                         cursor: pointer;
-                                         font-weight: bold; background-color: #447193;
-                                         color: white; padding: 8px; border-radius: 0px;
-                                         font-size: 16px;);">Search for a church
-                           </button>
-                       <div id="myDropdown" class="dropdown-content">
-                           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
-                           {% for country in country %}
-                            <a href="{% url 'users:cities' country.pk %}">{{country.country}}</a>
-                           {% endfor %}
-                      </div>
-                      </div>
-
                </div>
              </div>
            </section>
