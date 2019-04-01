@@ -7,8 +7,8 @@
   <form method="post">
     {% csrf_token %}
     <fieldset class="form-group pr-4" style="width: 1500px;">
-      <legend class="mb-4">Delete Post</legend>
-      <h2>Are you sure you want to delete the post with a title "{{ object.title }}"</h2>
+      <legend class="mb-4">Delete</legend>
+      <h2>Are you sure you want to delete "{{ object.title }}"</h2>
       <div class="form-row">
         <div class="form-group col-md-3 mb-0">
         </div>

@@ -8,24 +8,24 @@
 <p style="font-size: 30px;" class="text-center mt-4"> Cities in {{ country }}<p>
 
 
-    {% if author.access_challenge %}
+{% if country in access_challenge_country %}
 
-    <p class="text-center small col-sm-12 mt-5 text-info"> In order to get info about this country contact </p>
-    <p class="text-center text-uppercase"><strong>emeupci@protonmail.com</strong</p>
+      <p class="text-center small col-sm-12 mt-5 text-info"> In order to get info about this country contact </p>
+      <p class="text-center text-uppercase"><strong>emeupci@protonmail.com</strong</p>
 
-    {% else %}
+{% else %}
 
-    {% for city in cities %}
-    <table class="table table-hover text-left col-sm-12" style="table-layout: fixed; word-wrap: break-word;">
-       <tbody>
-        <tr>
-         <td><a class="text-uppercase" href="{% url 'users:address' city.pk %}">{{ city.city }}</a></td>
-        </tr>
-       </tbody>
-      </table>
-    {% endfor %}
+      {% for city in cities %}
+      <table class="table table-hover text-left col-sm-12" style="table-layout: fixed; word-wrap: break-word;">
+         <tbody>
+          <tr>
+           <td><a class="text-uppercase" href="{% url 'users:address' city.pk %}">{{ city.city }}</a></td>
+          </tr>
+         </tbody>
+        </table>
+      {% endfor %}
 
-    {% endif %}
+{% endif %}
 
 </div>
 

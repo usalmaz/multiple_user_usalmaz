@@ -1,8 +1,9 @@
 {% extends 'shared/base.html' %}
 {% load staticfiles %}
 {% load crispy_forms_tags %}
-
 {% block content %}
+
+<!-- Header -->
     <header class="masthead text-center text-white d-flex">
       <div class="container my-auto">
         <div class="row">
@@ -12,6 +13,7 @@
           </div>
       </div>
     </header>
+
     <section class="border-bottom" id="about">
       <div class="container">
         <div class="row">
@@ -23,6 +25,7 @@
         </div>
       </div>
     </section>
+
     <section class="border-bottom" id="areas">
       <div class="container">
         <div class="row">
@@ -81,33 +84,38 @@
       </div>
     </section>
 
-    <section class="border-bottom" id="locate">
+    <section class="border-bottom p-5" id="locate">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-12 mx-auto text-left">
-            <h2 class="section-heading">Locate a Church!</h2>
-            <br>
-            <p class="mb-5">There are fantastic, Spirit lead, Holy Ghost filled churches all across the EME Region.  Find one near you! </p>
-          </div>
-        </div>
-        <div class="container-fluid headerimage" style="padding:0 !important">
-            <div class="col-md-12" style="padding:0 !important;">
-                <img class="img-fluid" src="{% static 'users/img/map.png' %}" alt="map" width="1200" height="500">
-                 <div class="btn-wrapper"  style="position: absolute; top: 220px; left: 400px;">
-                   <a href="{% url 'users:countries' %}">
-                   <button class="btn btn-secondary btn-block col-md-4 col-lg-2"
-                           type="button"
-                           id="dropdownMenuButton"
-                           style=" border: 26px solid #f9f9f9;
-                                   cursor: pointer; min-width: 390px;
-                                   font-weight: bold; background-color: #447193;
-                                   color: white; padding: 8px; border-radius: 0px;
-                                   font-size: 16px;);"
+              <div class="row">
+                <div class="col-lg-12 mx-auto text-left">
+                  <h2 class="section-heading">Locate a Church!</h2>
+                  <br>
+                  <p class="mb-5">There are fantastic, Spirit lead, Holy Ghost filled churches all across the EME Region.  Find one near you! </p>
+                </div>
+              </div>
+                <div class="container-fluid headerimage">
+                  <div class="col-md-12">
+                      <div class=child>
+                       <div class="dropdown">
+                           <button  onclick="myFunction()"
+                                    class="dropbtn dropdown-toggle"
+                                    style=" border: 26px solid #f9f9f9;
+                                         cursor: pointer;
+                                         font-weight: bold; background-color: #447193;
+                                         color: white; padding: 8px; border-radius: 0px;
+                                         font-size: 16px;);">Search for a church
+                           </button>
+                       </div>
+                       <div id="myDropdown" class="dropdown-content">
+                           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                           {% for country in country %}
+                            <a href="{% url 'users:cities' country.pk %}">{{country.country}}</a>
+                           {% endfor %}
+                      </div>
+                      </div>
 
-                           onclick="{% url 'users:countries' %}">Search for a Church
-                   </button>
-                 </a>
-                 </div>
+                  </div>
+
    </section>
 
            <section class="border-bottom" id="ministries">
@@ -162,6 +170,7 @@
                       <h3 class="mb-3 text-left">Military</h3>
                       <p class="text-left text-muted">Serving those who Serve</p>
                       <p style="padding-bottom: 95px;" class="text-left mt-4">Points of connection and fellowship for those serving abroad.</p>
+                      <br>
                       <p><a href="https://www.facebook.com/upcimilitarychaplains/" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
                    </div>
                  </div>
@@ -171,6 +180,7 @@
                       <h3 class="mb-3 text-left">Ladies</h3>
                       <p class="text-left text-muted">Ministry specific to Ladies</p>
                       <p style="padding-bottom: 120px;" class="text-left mt-4">Powerful ministry by Ladies for Ladies!</p>
+                      <br>
                       <p><a href="https://www.facebook.com/EMELadies/" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
                    </div>
                  </div>
@@ -180,6 +190,7 @@
                       <h3 class="mb-3 text-left">Literature</h3>
                       <p class="text-left text-muted">Getting the word out</p>
                       <p style="padding-bottom: 0px;" class="text-left mt-4">Just as we are diverse geographically, ethnically, and culturally we are also diverse linguistically. This ministry is devoted to an ever expanding repository of information in various languages.</p>
+                      <br>
                       <p><a href="http://www.globaltracts.com" class="btn btn-info btn-block" style="background-color: #ccc8c7; border-radius: 0;" target="_blank">More Information</a></p>
                    </div>
                  </div>
@@ -198,21 +209,33 @@
                <div class="row">
                  <div class="col-lg-12 mx-auto text-left">
                    <h2 class="section-heading text-center"><strong class="text-uppercase position-sticky">Contact us</strong></h2><br>
-                   <div class="social">
                      <br>
                      {% include 'users/social_buttons.html' %}
                  </div>
                </div>
-               <div class="dropdown">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown button
-                  </button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="{% url 'users:countries' %}">Kyrgyzstan</a>
-                    <a class="dropdown-item" href="http://127.0.0.1:8000/accounts/cabinet/cities/31/">Uzbekistan</a>
-                    <a class="dropdown-item" href="#">Kazahkstan</a>
-                  </div>
-                </div>
+             </div>
+           </section>
+           <section>
+             <div class="parent">
+               <div class="child">
+                <div class="dropdown">
+                           <button  onclick="myFunction()"
+                                    class="dropbtn dropdown-toggle"
+                                    style=" border: 26px solid #f9f9f9;
+                                         cursor: pointer;
+                                         font-weight: bold; background-color: #447193;
+                                         color: white; padding: 8px; border-radius: 0px;
+                                         font-size: 16px;);">Search for a church
+                           </button>
+                       <div id="myDropdown" class="dropdown-content">
+                           <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                           {% for country in country %}
+                            <a href="{% url 'users:cities' country.pk %}">{{country.country}}</a>
+                           {% endfor %}
+                      </div>
+                      </div>
+
+               </div>
              </div>
            </section>
 

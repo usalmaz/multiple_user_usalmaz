@@ -7,16 +7,23 @@
 <div class="content-section mt-5 pl-4 p-5">
 
   {% if form.errors %}
-      <p class="text-info small">You will be able login after admin will approve. Check back in a few days.</p>
-      <p class="text-info small">Or your username and password didn't match. Please try again.</p>
+      <p class="alert alert-danger small" style="width: 40%">Your username or password didn't match. Please try again.</p>
+  {% endif %}
+
+  {% if messages %}
+  <div class="alert alert-success small" style="width: 40%">
+      {% for message in messages %}
+      <h5{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</h5>
+      {% endfor %}
+  </div>
   {% endif %}
 
   {% if next %}
       {% if user.is_authenticated %}
-      <p>Your account doesn't have access to this page. To proceed,
+      <p class="alert alert-success small" style="width: 40%">Your account doesn't have access to this page. To proceed,
       please login with an account that has access.</p>
       {% else %}
-      <p>Please login to see this page.</p>
+      <p class="alert alert-success small" style="width: 40%">Please login to see this page.</p>
       {% endif %}
   {% endif %}
 

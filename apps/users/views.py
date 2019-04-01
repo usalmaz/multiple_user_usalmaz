@@ -1,17 +1,29 @@
 from django.shortcuts import render, redirect
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.core import mail
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import CreateView, DetailView, ListView, UpdateView, DeleteView
-from .forms import UserCreationModelForm
-from .models import User, Post
+from .forms import UserCreationModelForm, UserUpdateForm, ProfileUpdateForm
+from .models import User, Post, Profile, Country
 
-class UserRegistrationView(CreateView):
+class UserRegistrationView(SuccessMessageMixin, CreateView):
     form_class = UserCreationModelForm
+    model = User
     success_url = reverse_lazy('login')
+    success_message = "Account for %(first_name)s was created successfully. You will get email notification when admin will activate your account!"
     template_name = 'users/registration.html'
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(cleaned_data)
+
 
 class PostDetailView(DetailView):
     model = Post
+
 
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -45,12 +57,42 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
             return True
         return False
 
-class CabinetView(LoginRequiredMixin, DetailView):
-    model = User
+@login_required
+def cabinet(request):
+    profile = Profile.objects.all()
 
-    def get_object(self):
-        return self.request.user
+    context = {
+        'profile': profile
 
+    }
+    return render(request, 'users/user_detail.html', context)
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        uform = UserUpdateForm(request.POST, instance=request.user)
+        pform = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+        posts = Post.objects.filter(author=request.user)
+
+        if uform.is_valid() and pform.is_valid():
+            uform.save()
+            pform.save()
+            messages.success(request, f'Your account has been updated!')
+            return redirect('users:cabinet')
+    else:
+        uform = UserUpdateForm(instance=request.user)
+        pform = ProfileUpdateForm(instance=request.user.profile)
+        posts = Post.objects.filter(author=request.user)
+
+    context = {
+        'uform': uform,
+        'pform': pform,
+        'posts': posts
+    }
+
+    return render(request, 'users/user_detail.html', context)
+
+@login_required
 def blog(request):
 
     context = {
@@ -61,7 +103,7 @@ def blog(request):
 def countries(request):
 
     user = User.objects.all()
-    country = Post.objects.all().distinct('country')
+    country = Post.objects.all().order_by('country').distinct('country')
 
     context = {
         'posts': country,
@@ -73,15 +115,16 @@ def countries(request):
 
 
 def cities(request, pk):
-
     country = Post.objects.get(id=pk).country
     cities = Post.objects.filter(country=country).distinct('city')
     author = Post.objects.get(id=pk).author
+    access_challenge_country = Country.objects.filter(access_challenge = True)
 
     context = {
         'cities':cities,
         'country':country,
         'author':author,
+        'access_challenge_country': access_challenge_country
 
     }
 
@@ -93,6 +136,7 @@ def address(request, pk):
     address = Post.objects.filter(city=city)
     email = Post.objects.all()
 
+
     context = {
         'user': user,
         'address': address,
@@ -103,11 +147,15 @@ def address(request, pk):
 
 def home(request):
         user = User.objects.all()
-        country = Post.objects.all().distinct('country')
+        cname = request.POST.get('dropdown1')
+        city = Post.objects.all().distinct('city')
+        country = Post.objects.all().distinct('country').order_by('country_id')
+
 
         context = {
-            'posts': country,
-            'user': user
+            'country': country,
+            'user': user,
+            'city': city
         }
 
         return render(request, 'registration/home.html', context)

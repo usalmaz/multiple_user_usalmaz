@@ -3,37 +3,26 @@
 
 {% block content %}
 
-<div class="content-section p-5 mt-5 pl-4">
-<h1 class="text-center text-uppercase">{{ city }}</h1>
+<h1 class="text-center text-uppercase p-3 mt-5">{{ city }}</h1>
+
+<div class="conteiner-fluid row ml-2 ml-4">
 
 {% for store in address %}
 
-<table class="table table-hover text-left col-sm-12 mt-4" style="table-layout: fixed; word-wrap: break-word;">
-       <tbody>
-         <tr>
-           <th style="width: 100px;"> Name: </th>
-           <td> {{store.title}}</td>
-         </tr>
+<div class="card1 small col-lg-8 col-xs-12" style="background-color: #f2f3f4;">
+    <div class="card-body" style="card-text: break-word">
+    <p class="card-text font-weight-bold mb-3 text-uppercase">Church title: <a href="{% url 'users:post-detail' store.pk %}">{{store.title}}</a></p>
+    <p class="card-text">Address: {{store.address}}.</p>
+    <p class="card-text">Email: {{store.email}}.</p>
+    <p class="card-text">Phone: {{store.phone}}.</p>
+    <p class="card-text">Website: <a href="{{store.website}}">{{store.website}}.</a></p>
+    <p class="card-text text-muted">Created by: {{store.author.first_name}} {{store.author.last_name}} <br> on {{store.date_posted|date:"F d, Y"}}.</p>
+    </div>
+</div>
 
-        <tr>
-          <th style="width: 100px;"> Address: </th>
-          <td> {{store.address}}</td>
-        </tr>
-        <tr>
-          <th style="width: 100px;"> Email: </th>
-          <td> {{store.email}}</td>
-        </tr>
-        <tr>
-          <th style="width: 100px;"> Phone: </th>
-          <td> {{store.phone}}</td>
-        </tr>
-        <tr>
-          <th style="width: 100px;">Website: </th>
-          <td> {{store.website}}</td>
-        </tr>
 
-    </tbody>
-</table>
+
+
 {% endfor %}
 {% endblock %}
 

@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'main.urls'
@@ -134,8 +135,14 @@ AUTH_USER_MODEL = 'users.User'
 LOGIN_REDIRECT_URL = '/accounts/cabinet/'
 LOGIN_URL = 'login'
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'ualmaz@gmail.com'
+EMAIL_HOST_PASSWORD = '197723320a'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'apps', 'emails')
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+MESSAGE_STORAGE = 'django.contrib.messages.storage.cookie.CookieStorage'

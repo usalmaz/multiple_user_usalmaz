@@ -6,41 +6,78 @@
 <br>
 <br>
 <div class="container mt-5">
+  <div>
+    {% for messages in messages %}
+    <p class="alert alert-success" style="width: 50%">{{messages}}</p>
+    {% endfor %}
+  </div>
+  <br>
+  <br>
   <div class="row">
-    <div class="col-sm-6 border-right">
       <div class="media">
-        <img class="rounded-circle" style="width: 200px;" src="{{ user.profile.image.url }}">
-          <div class="media-body pl-4">
-            <h4 class="account-heading"> username: {{ object.username }}   </h4>
-            <p class="text-secondary"> First name: {{ object.first_name }} </p>
-            <p class="text-secondary"> Last name: {{ object.last_name }}   </p>
-            <p class="text-secondary"> Email: {{ object.email }}           </p>
-            <p class="text-secondary"> Country: {{ object.country }}       </p>
-            <p class="text-secondary"> City: {{ object.city }}             </p>
-          </div>
+        <img class="rounded-circle account-img" style="width: 220px; height: 230px;" src="{{ user.profile.image.url }}">
       </div>
+      <div class="media-body pl-4">
+        <h4 class="account-heading"> Profile Information   </h4>
+        <p class="text-secondary"> First name: {{ user.first_name }} </p>
+        <p class="text-secondary"> Last name: {{ user.last_name }}   </p>
+        <p class="text-secondary"> Email: {{ user.email }}           </p>
+        <p class="text-secondary"> Country: {{ user.country }}       </p>
+        <p class="text-secondary"> City: {{ user.city }}             </p>
+        <p class="text-secondary"> username: {{ user.username }}     </p>
+      </div>
+  </div>
+
+      <div class="form-container mt-5">
+      <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Update Profile Info</legend>
+          {{ uform|crispy }}
+          {{ pform|crispy }}
+        </fieldset>
+        <div class="browse mb-4">
+          <input id="id_image" class="clearablefileinput1" type="file" name="image" accept="image" style="width: 250px;">
+        </div>
+        <div class="form-group">
+          <button class="btn  btn-info btn-block" style="border-radius: 0; width: 200px; padding-left: 4px;" type="submit">Update</button>
+        </div>
+      </form>
+     </div>
+
   </div>
 
   <div class="col-sm-6"">
     <div class="media">
       <div class="media-body pl-4" style="background-color: white; width: 500px; padding-left: 14px; margin-right: 1px;">
         <h4 class="account-heading">
-          {% if object.country %}
-            Churches in {{ object.country }}
+          {% if user.country %}
+            <span class="text-muted small text-center">Churches added by <b>{{ user.first_name }} {{ user.last_name }}</b></span>
           {% endif %}
         </h4>
-  <div class="border-top pt-3">
-    <small class="text-muted">
-      <a class="ml-2" style="text-decoration: none;" href="{% url 'users:blog' %}">
-        <button
-          style="border-radius: 0;
-          width: 250px; padding-left: 4px;"
-          class="btn  btn-info btn-block"
-          type="submit">Click here to see them
-        </button>
-      </a>
-    </small>
-  </div>
 
+        {% for post in posts %}
+
+        <div class="card small d-flex p-2 col-sm-2.5 ml-2 mb-2 mt-4" style="background-color: #f2f3f4;">
+            <div class="card-body" style="card-text: break-word">
+            <p class="card-text font-weight-bold mb-3 text-uppercase" style="width: 350px">Church title: <a href="{% url 'users:post-detail' post.pk %}">{{ post.title }}</a></p>
+            <p class="card-text" style="width: 350px">Country: {{post.country}}.</p>
+            <p class="card-text" style="width: 350px">City: <a href="{% url 'users:address' post.pk %}">{{post.city}}.</a></p>
+            <p class="card-text" style="width: 350px">Address: {{post.address}}.</p>
+            <p class="card-text" style="width: 350px">Email: {{post.email}}.</p>
+            <p class="card-text" style="width: 350px">Phone: {{post.phone}}.</p>
+            <p class="card-text" style="width: 350px">Website: <a href="{{post.website}}">{{post.website}}</a></p>
+            <p class="card-text text-muted" style="width: 350px">Added by: <a href="{% url 'users:cabinet' %}">{{post.author.first_name}} {{post.author.last_name}}</a> <br> on {{post.date_posted|date:"F d, Y"}}.</p>
+            </div>
+        </div>
+
+        {% empty %}
+
+        <div class="well well-lg bordered" style="background-color: #F7EDED; padding: 200px; ">
+
+        <h2 class="text-center small">You don't have any churches yet. <br>Please click <a href="{% url 'users:post-create' %}">"Add Church"</a> to create one. </h2>
+
+        </div>
+        {% endfor %}
 
 {% endblock %}
